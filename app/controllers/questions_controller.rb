@@ -4,7 +4,7 @@ class QuestionsController < ApplicationController
   end
 
   def show
-    @questions = Question.find(params[:id])
+    @question = Question.find(params[:id])
   end
 
   def new
@@ -30,7 +30,7 @@ class QuestionsController < ApplicationController
     @question = Question.find(params[:id])
     if @question.update_attributes(params.require(:question).permit(:title, :body, :resolved))
       flash[:notice] = "Question was updated."
-      redirect_to @post
+      redirect_to @question
     else
       flash[:error] = "There was an error saving the question. Please try again."
       render :edit
