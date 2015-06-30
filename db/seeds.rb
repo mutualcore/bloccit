@@ -43,8 +43,9 @@ user = User.first
 user.skip_reconfirmation!
 user.update_attributes!(
   email: 'parmenter.lily@gmail.com',
-  password: 'lilzpeach')
+  password: 'Password123')
 
 puts "Seed finished"
+puts "#{User.count} users created"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"

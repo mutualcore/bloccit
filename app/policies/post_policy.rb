@@ -3,6 +3,7 @@ class PostPolicy < ApplicationPolicy
     attr_reader :user, :scope
 
     def initialize(user, scope)
+      raise Pundit::NotAuthorizedError, "Must be logged in to view posts." unless user
       @user = user
       @scope = scope
     end
@@ -11,20 +12,12 @@ class PostPolicy < ApplicationPolicy
       if user.admin? || user.moderator?
         scope.all
       else
-        scope.where(:published => true)
+        scope.where(:user_id => user.id)
       end
     end
   end
 
-  def update?
-    user.admin? or not post.published?
-  end
-
   def index?
-    if user.guest?
-      false
-    else
-      true
-    end
+    true
   end
 end
