@@ -21,6 +21,10 @@ class PostPolicy < ApplicationPolicy
   end
 
   def index?
-    true
+    if user.guest?
+      false
+    else
+      true
+    end
   end
 end
