@@ -1,0 +1,10 @@
+<%= form_for([topic, post, post.comments.new]) do |f| %>
+<h2>Add a comment</h2>
+  <div class="field">
+    <%= f.label :body %><br />
+    <%= f.text_area :body %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
