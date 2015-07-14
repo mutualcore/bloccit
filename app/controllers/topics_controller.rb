@@ -48,3 +48,4 @@
     params.require(:topic).permit(:name, :description, :public)
    end
  end
+
