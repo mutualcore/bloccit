@@ -19,3 +19,6 @@
 # Ignore secrets
 /config/application.yml
 /config/secrets.yml
+
+# CarrierWave image
+public/uploads
