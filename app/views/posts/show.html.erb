@@ -7,10 +7,11 @@
 			 submitted <%= time_ago_in_words(@post.created_at) %> ago by
 			 <%= @post.user.name %><br>
 		</small>
-		<p><%= markdown_to_html @post.body %></p>
-		<% @post.comments.each do |comment| %>
-  		<%= render partial: 'comments/comment', locals: { comment: comment } %>
-		<% end %>
+		<p><%= markdown_to_html @post.body %><%=image_tag(@post.image_url) if @post.image? %></p>
+    <h3>Comments</h3>
+
+		<%= render @comments %>
+		
 		<%= render partial: 'comments/form', locals: {topic: @topic, post: @post} %>
 	</div>
 	<div class="col-md-4">

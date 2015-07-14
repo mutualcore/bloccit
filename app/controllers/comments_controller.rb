@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
      @post = Post.find(params[:post_id])
      @comment = current_user.comments.build(comment_params)
      @comment.post_id = @post.id
+     @user = current_user
      if @comment.save
       flash[:notice] = "Comment was saved."
      else
