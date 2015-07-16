@@ -9,14 +9,14 @@
 			 <%= @post.user.name %><br>
 		</small>
 		<p><%= markdown_to_html @post.body %><%=image_tag(@post.image_url) if @post.image? %></p>
+	</div>
+	<div class="col-md-8">
     <h3>Comments</h3>
-
 		<%= render @comments %>
-		
-		<% if policy(Comment.new).new %>
+		<% if policy(Comment.new).create? %>
 			<%= render partial: 'comments/form', locals: {topic: @topic, post: @post} %>
 		<% end %>
-
+  </div>
 	</div>
 	<div class="col-md-4">
 		<% if policy(@post).edit? %>

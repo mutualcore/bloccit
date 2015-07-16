@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
      @post = Post.find(params[:post_id])
      @comment = current_user.comments.build(comment_params)
      @comment.post_id = @post.id
+     @topic = Topic.find(params[:topic_id])
      authorize @comment
      
      if @comment.save
@@ -10,7 +11,7 @@ class CommentsController < ApplicationController
      else
       flash[:error] = "There was an error saving the comment. Please try again."
      end
-     redirect_to [@post.topic, @post]
+     redirect_to [@topic, @post]
   end
 
   def new
