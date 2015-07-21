@@ -1,3 +1,4 @@
+// "bootstrap-sprockets" must be imported before "bootstrap" and "bootstrap/variables"
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
@@ -9,7 +10,10 @@
   margin-top: 5px;
 }
 
- 
+.vote-arrows {
+  width: 40px;
+  text-align: center;
+}
 
 /*
  * This is a manifest file that'll be compiled into application.css, which will include all the files
