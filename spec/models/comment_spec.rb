@@ -22,15 +22,13 @@ describe Comment do
          .with(@user, @post, @comment)
          .and_return( double(deliver_now: true) )
 
-         expect( FavoriteMailer )
-           .to receive(:new_comment)
+         expect( FavoriteMailer ).to receive(:new_comment)
 
        @comment.save
      end
 
      it "does not send emails to users who haven't" do
-       expect( FavoriteMailer )
-         .not_to receive(:new_comment)
+       expect( FavoriteMailer ).not_to receive(:new_comment)
 
        @comment.save
      end
@@ -42,8 +40,7 @@ describe Comment do
     it "does not send emails, even to users who have favorited" do
       @user.favorites.where(post: @post).create
 
-      expect( FavoriteMailer )
-        .not_to receive(:new_comment)
+      expect( FavoriteMailer ).not_to receive(:new_comment)
 
       @comment.save
     end
