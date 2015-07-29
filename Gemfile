@@ -56,3 +56,6 @@ gem 'mini_magick'
 gem 'fog'
 gem 'will_paginate'
 gem 'figaro'
+gem 'newrelic_rpm'
+gem 'puma', group: :production
+gem 'thin', group: :development
